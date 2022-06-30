@@ -1,4 +1,7 @@
-﻿namespace Listenr;
+﻿using Listenr.ViewModels;
+using Listenr.Views;
+
+namespace Listenr;
 
 public static class MauiProgram
 {
@@ -13,6 +16,14 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+		//Views
+		builder.Services.AddSingleton<MainPageView>();
+		builder.Services.AddSingleton<YoutubeLinkView>();
+
+        //ViewModels
+        builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddSingleton<YoutubeLinkViewModel>();
+
+        return builder.Build();
 	}
 }
