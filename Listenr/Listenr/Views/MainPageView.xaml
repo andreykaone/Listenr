@@ -2,26 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Listenr.MainPageView" 
+             xmlns:viewmodel="clr-namespace:Listenr.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
+             NavigationPage.HasNavigationBar="False"
              Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*"
-        RowDefinitions="400,*,100">
-        <CollectionView
-            Grid.Row="0"
-            BackgroundColor="AliceBlue">
-        </CollectionView>
+        RowDefinitions="300,*,*,70,50"
+        BackgroundColor="#1B232A">
 
-        <Label
-            Grid.Row="1"
-            BackgroundColor="BlanchedAlmond"
-            Text="Выкачай аудио из любого youtube видео">
-        </Label>
+        <Image Source="Images/youtube_logo.svg" Grid.Row="0"></Image>
 
-        <Button 
-            Grid.Row="2"
-            Text="hello there" 
-            Grid.Column="0"
-            Command="{Binding GoToYoutubeLinkViewCommand}"
-            Margin="8"/>
+        <Label Grid.Row="1" FontSize="32" TextColor="#5ED5A8" HorizontalTextAlignment="Center">Download your audio</Label>
+        <Label Grid.Row="2" FontSize="18" TextColor="#777777" Padding="30, 0, 30, 0" HorizontalTextAlignment="Center">Just pass your highly wannable youtube video below and we will give you ability to listen to it!</Label>
+
+        <Entry Grid.Row="3" PlaceholderColor="AliceBlue" Margin="30, 0, 30, 0" Text="{Binding Urlii}" Placeholder="Enter video link" Background="#1B232A"/>
+        <Button Grid.Row="4" Text="Listen to it!" Command="{Binding OpenBrowserCommand}"></Button>
+        
     </Grid>
 </ContentPage>

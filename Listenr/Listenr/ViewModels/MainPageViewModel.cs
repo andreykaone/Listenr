@@ -1,11 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Listenr.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using YoutubeExplode;
 
 namespace Listenr.ViewModels
 {
@@ -14,15 +10,26 @@ namespace Listenr.ViewModels
         [ObservableProperty]
         string title;
 
-        public MainPageViewModel()
-        {
-            Title = "Первая страница";
-        }
+        [ObservableProperty]
+        string urlii;
+
+        private YoutubeClient youtubeClient => new();
 
         [RelayCommand]
-        static async Task GoToYoutubeLinkViewAsync()
+        async Task OpenBrowserAsync()
         {
-            await Shell.Current.GoToAsync(nameof(YoutubeLinkView));
+            try
+            {
+                var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(Urlii);
+                var streamInfo = streamManifest.GetAudioOnlyStreams().OrderBy(x => x.Bitrate).FirstOrDefault();
+
+                var uri = new Uri($"{streamInfo.Url}");
+                await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }

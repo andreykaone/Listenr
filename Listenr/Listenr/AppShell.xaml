@@ -7,8 +7,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Shell.NavBarIsVisible="True"
-        Title="Home"
+        Shell.NavBarIsVisible="False"
         ContentTemplate="{DataTemplate local:MainPageView}"
         Route="MainPageView" />
 

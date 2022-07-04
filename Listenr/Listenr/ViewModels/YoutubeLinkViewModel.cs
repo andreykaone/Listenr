@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Listenr.ViewModels
 {
-    public class YoutubeLinkViewModel : ObservableObject
+    [QueryProperty("Path", "path")]
+    public partial class YoutubeLinkViewModel : ObservableObject
     {
+        [ObservableProperty]
+        string path;
     }
 }
