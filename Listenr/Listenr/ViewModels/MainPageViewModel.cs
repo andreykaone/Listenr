@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
 using YoutubeExplode;
+using YoutubeExplode.Videos.Streams;
 
 namespace Listenr.ViewModels
 {
@@ -21,14 +21,14 @@ namespace Listenr.ViewModels
             try
             {
                 var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(Urlii);
-                var streamInfo = streamManifest.GetAudioOnlyStreams().OrderBy(x => x.Bitrate).FirstOrDefault();
+                var streamInfo = streamManifest.GetAudioOnlyStreams().GetWithHighestBitrate();
 
                 var uri = new Uri($"{streamInfo.Url}");
                 await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
             }
-            catch (Exception ex)
+            catch
             {
-                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Oopsie!", "Looks like we have some problems, Houston!", "Relax");
             }
         }
     }

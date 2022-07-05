@@ -1,5 +1,4 @@
 ﻿using Listenr.ViewModels;
-using Listenr.Views;
 
 namespace Listenr;
 
@@ -19,12 +18,10 @@ public static class MauiProgram
 
 		//Views
 		builder.Services.AddSingleton<MainPageView>();
-		builder.Services.AddSingleton<YoutubeLinkView>();
 
-        //ViewModels
-        builder.Services.AddSingleton<MainPageViewModel>();
-        builder.Services.AddSingleton<YoutubeLinkViewModel>();
+		//ViewModels
+		builder.Services.AddSingleton<MainPageViewModel>();
 
-        return builder.Build();
+		return builder.Build();
 	}
 }

@@ -8,16 +8,34 @@
              Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*"
-        RowDefinitions="300,*,*,70,50"
+        RowDefinitions="350,Auto,Auto,Auto,Auto"
         BackgroundColor="#1B232A">
 
-        <Image Source="Images/youtube_logo.svg" Grid.Row="0"></Image>
+        <Image Grid.Row="0" 
+               Source="Images/youtube_logo.svg" 
+               HeightRequest="300" 
+               WidthRequest="300" />
+        <Label Grid.Row="1" 
+               FontFamily="Poppins-Regular" FontSize="24" 
+               TextColor="#5ED5A8" HorizontalTextAlignment="Center">Download your audio</Label>
+        <Label Grid.Row="2" 
+               FontFamily="Poppins-Regular" FontSize="18" 
+               TextColor="#777777" Padding="30, 30, 30, 0" 
+               HorizontalTextAlignment="Center">
+            Just pass your highly wannable youtube video below and we will give you ability to listen to it!
+        </Label>
 
-        <Label Grid.Row="1" FontSize="32" TextColor="#5ED5A8" HorizontalTextAlignment="Center">Download your audio</Label>
-        <Label Grid.Row="2" FontSize="18" TextColor="#777777" Padding="30, 0, 30, 0" HorizontalTextAlignment="Center">Just pass your highly wannable youtube video below and we will give you ability to listen to it!</Label>
+        <Border Stroke="#161C22" Grid.Row="3" Margin="25, 50, 25, 0" Padding="15, 0, 0, 0"  BackgroundColor="#161C22" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <Entry
+                 Text="{Binding Urlii}"
+                Placeholder="Enter video link" PlaceholderColor="#777777" 
+                BackgroundColor="Transparent" />
+        </Border>
 
-        <Entry Grid.Row="3" PlaceholderColor="AliceBlue" Margin="30, 0, 30, 0" Text="{Binding Urlii}" Placeholder="Enter video link" Background="#1B232A"/>
-        <Button Grid.Row="4" Text="Listen to it!" Command="{Binding OpenBrowserCommand}"></Button>
+        <Button Margin="10" Padding="10" TextColor="#171D22" BackgroundColor="#5ED5A8" Grid.Row="4" Text="Listen to it!" Command="{Binding OpenBrowserCommand}"></Button>
         
     </Grid>
 </ContentPage>
