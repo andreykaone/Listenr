@@ -26,9 +26,10 @@ namespace Listenr.ViewModels
                 var uri = new Uri($"{streamInfo.Url}");
                 await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
             }
-            catch
+            catch(Exception ex)
             {
-                await Shell.Current.DisplayAlert("Oopsie!", "Looks like we have some problems, Houston!", "Relax");
+                await Shell.Current.DisplayAlert("Oopsie!", "Looks like we have some problems, Houston!" 
+                    + Environment.NewLine + $"Reason: {ex.Message}", "Relax");
             }
         }
     }

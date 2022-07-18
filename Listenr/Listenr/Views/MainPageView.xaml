@@ -31,7 +31,7 @@
             </Border.StrokeShape>
             <Entry
                  Text="{Binding Urlii}"
-                Placeholder="Enter video link" PlaceholderColor="#777777" 
+                Placeholder="Enter video link" TextColor="White" PlaceholderColor="#777777" 
                 BackgroundColor="Transparent" />
         </Border>
 
